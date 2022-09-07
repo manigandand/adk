@@ -148,6 +148,30 @@ func (err *AppError) AddDebug(cause error) *AppError {
 	return err
 }
 
+// Wrapf github.com/pkg/errors.Wrapf
+// Wrapf returns an error annotating err with a stack trace
+// at the point Wrapf is called, and the format specifier.
+// If err is nil, Wrapf returns nil.
+func (err *AppError) Wrapf(cause error, format string, args ...interface{}) *AppError {
+	return err.AddDebug(errors.Wrapf(cause, format, args...))
+}
+
+// Wrap github.com/pkg/errors.Wrap
+// Wrap returns an error annotating err with a stack trace
+// at the point Wrap is called, and the supplied message.
+// If err is nil, Wrap returns nil.
+func (err *AppError) Wrap(cause error, message string) *AppError {
+	return err.AddDebug(errors.Wrap(cause, message))
+}
+
+// Wrapd github.com/pkg/errors.Wrap
+// Wrap returns an error annotating err with a stack trace
+// at the point Wrap is called, and the supplied message.
+// If err is nil, Wrap returns nil.
+func (err *AppError) Wrapd(message string) *AppError {
+	return err.AddDebug(errors.Wrap(err.debug, message))
+}
+
 // AddDebugf is a helper function which calls fmt.Errorf internally
 // for the error which is added a Debug
 func (err *AppError) AddDebugf(format string, a ...interface{}) *AppError {
