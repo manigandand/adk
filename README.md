@@ -6,6 +6,11 @@
 [![License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](https://github.com/manigandand/adk/blob/master/LICENSE)
 [![](http://img.shields.io/badge/godoc-reference-5272B4.svg)](https://godoc.org/github.com/manigandand/adk)
 
+**GoDoc Reference:**
+- api: [![](http://img.shields.io/badge/godoc-reference-5272B4.svg)](https://godoc.org/github.com/manigandand/adk/api)
+- errors: [![](http://img.shields.io/badge/godoc-reference-5272B4.svg)](https://godoc.org/github.com/manigandand/adk/errors)
+- respond: [![](http://img.shields.io/badge/godoc-reference-5272B4.svg)](https://godoc.org/github.com/manigandand/adk/respond)
+
 Common utilities to write simple apis in golang.
 
 ```shell
