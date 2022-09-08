@@ -242,7 +242,7 @@ const (
 	statusClientCancelled = 460
 )
 
-// OverwriteStatusCode change the status code to 460, if the error containts
+// OverwriteStatusCode change the status code to 460, if the error contains
 // context canceled.
 func (err *AppError) OverwriteStatusCode() {
 	if err == nil {
