@@ -4,8 +4,7 @@
 [![Go Report](https://goreportcard.com/badge/github.com/manigandand/adk)](https://goreportcard.com/report/github.com/manigandand/adk)
 [![GolangCI](https://golangci.com/badges/github.com/manigandand/adk.svg)](https://golangci.com/r/github.com/manigandand/adk)
 [![License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](https://github.com/manigandand/adk/blob/master/LICENSE)
-
-[![](http://img.shields.io/badge/godoc-reference-5272B4.svg?style=for-the-badge)](https://godoc.org/github.com/manigandand/adk)
+[![](http://img.shields.io/badge/godoc-reference-5272B4.svg)](https://godoc.org/github.com/manigandand/adk)
 
 Common utilities to write simple apis in golang.
 
