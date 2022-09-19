@@ -25,7 +25,11 @@ func (rw *responseWriter) WriteHeader(statusCode int) {
 }
 
 func getReqID(r *http.Request) string {
-	return r.Context().Value(RequestIDHeader).(string)
+	reqID, ok := r.Context().Value(RequestIDHeader).(string)
+	if !ok {
+		return ""
+	}
+	return reqID
 }
 
 // Logger middlwware logs the request stats post the call.
