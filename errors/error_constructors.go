@@ -44,6 +44,11 @@ func KeyRequired(key string) *AppError {
 	return BadRequest(key + " is required")
 }
 
+// InvalidKey returns new error with custom error message
+func InvalidKey(val, key string) *AppError {
+	return BadRequest(val + " is invalid " + key)
+}
+
 // 4xx -------------------------------------------------------------------------
 
 // BadRequest will return `http.StatusBadRequest` with custom message.
