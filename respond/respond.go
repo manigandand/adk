@@ -84,6 +84,11 @@ func NoContent(w http.ResponseWriter, data interface{}) *errors.AppError {
 // Fail write the error response
 // Common func to send all the error response
 func Fail(w http.ResponseWriter, e *errors.AppError) *errors.AppError {
+	// override to 5XX if status code was missing in the error
+	if e.GetStatus() == 0 {
+		e.UpdateStatus(http.StatusInternalServerError)
+	}
+
 	e.Log()
 	e.OverwriteStatusCode()
 
