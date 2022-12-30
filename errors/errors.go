@@ -25,6 +25,9 @@ type AppError struct {
 
 // NewAppError returns the new apperror object
 func NewAppError(status int, msg string) *AppError {
+	if status == 0 {
+		status = http.StatusInternalServerError
+	}
 	return &AppError{
 		status:  status,
 		message: msg,
