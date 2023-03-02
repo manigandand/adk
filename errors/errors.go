@@ -21,6 +21,7 @@ type AppError struct {
 	debug        error       // `json:"-"`
 	conflictData interface{} // `json:"conflict_data,omitempty"` // Add any relevant trace info for debug
 	errorDetails *Details    // `json:"error_details,omitempty"` // Custom internal error codes
+	disableLog   bool        // `json:"-"` // disable's the log, log trace in Log()
 }
 
 // NewAppError returns the new apperror object
@@ -101,6 +102,13 @@ func (err *AppError) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+// WithNoLog enables the no logging for this particular error.
+// this can be invoked at the handler level return err.WithNoLog()
+func (err *AppError) WithNoLog() *AppError {
+	err.disableLog = true
+	return err
+}
+
 // Using stackTracer, the stack trace of an error can be retrieved and controlled.
 // https://pkg.go.dev/github.com/pkg/errors#hdr-Retrieving_the_stack_trace_of_an_error_or_wrapper
 type stackTracer interface {
@@ -110,6 +118,11 @@ type stackTracer interface {
 // Log logs the app error to stdout
 // log stack trace
 func (err *AppError) Log() {
+	// no logging
+	if err.disableLog {
+		return
+	}
+
 	if err != nil {
 		log.Println("[error-msg] ", err.status, err.Error())
 		if err.debug == nil {
