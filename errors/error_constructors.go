@@ -81,6 +81,11 @@ func Conflict(message string) *AppError { // 409
 	return NewAppError(http.StatusConflict, message)
 }
 
+// Gone will return `http.StatusGone` with custom message.
+func Gone(message string) *AppError { // 410
+	return NewAppError(http.StatusGone, message)
+}
+
 // UnprocessableEntity will return `http.StatusUnprocessableEntity` with
 // custom message.
 func UnprocessableEntity(message string) *AppError { // 422
@@ -91,6 +96,12 @@ func UnprocessableEntity(message string) *AppError { // 422
 // custom message.
 func TooManyRequests(message string) *AppError { // 422
 	return NewAppError(http.StatusTooManyRequests, message)
+}
+
+// TooEarly will return `http.StatusTooEarly` with
+// custom message.
+func TooEarly(message string) *AppError { // 425
+	return NewAppError(http.StatusTooEarly, message)
 }
 
 // 5xx -------------------------------------------------------------------------
